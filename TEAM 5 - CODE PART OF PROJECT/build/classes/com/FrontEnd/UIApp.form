@@ -418,6 +418,9 @@
           <Color blue="45" green="43" red="41" type="rgb"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="checkbox1MouseClicked"/>
+      </Events>
     </Component>
     <Component class="java.awt.Checkbox" name="checkbox2">
       <Properties>
@@ -425,6 +428,9 @@
           <Color blue="45" green="43" red="41" type="rgb"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="checkbox2MouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

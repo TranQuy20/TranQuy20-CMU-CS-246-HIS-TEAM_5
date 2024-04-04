@@ -30,6 +30,9 @@ public class UIApp extends javax.swing.JPanel {
     public double num1;
     public double num2;
     
+    char[] arrnum1; //
+    char[] arrnum2; //
+    
     public UIApp() {
         initComponents();
         setOpaque(false);
@@ -69,6 +72,13 @@ public class UIApp extends javax.swing.JPanel {
             num1 = Double.parseDouble(First_Label.getText());
             num2 = Double.parseDouble(Second_Label.getText());
         }
+    }
+    
+    public void splitNumberToStringArray() {
+       
+        arrnum1 = (First_Label.getText()).toCharArray();
+        arrnum2 = (Second_Label.getText()).toCharArray();
+        
     }
     
     @SuppressWarnings("unchecked")
@@ -205,8 +215,18 @@ public class UIApp extends javax.swing.JPanel {
         });
 
         checkbox1.setBackground(new java.awt.Color(65, 67, 69));
+        checkbox1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                checkbox1MouseClicked(evt);
+            }
+        });
 
         checkbox2.setBackground(new java.awt.Color(65, 67, 69));
+        checkbox2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                checkbox2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -482,16 +502,89 @@ public class UIApp extends javax.swing.JPanel {
     }//GEN-LAST:event_Clear_ButtonActionPerformed
 
     private void LeftDelete_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeftDelete_ButtonActionPerformed
-        // TODO add your handling code here:
+         splitNumberToStringArray();
+        if(checkbox1.getState() == true){
+            char[] temp = new char[arrnum1.length-1];
+            for(int i=0; i<arrnum1.length-1;i++) {
+                 temp[i] = arrnum1[i]; 
+            }
+            arrnum1 = temp;
+            
+            String number1="";
+            for(int i=0; i<arrnum1.length;i++) {
+                 number1 += arrnum1[i]; 
+            }
+            
+            First_Label.setText(number1);
+        } 
+        
+        else if(checkbox2.getState() == true){
+            char[] temp = new char[arrnum2.length-1];
+            for(int i=0; i<arrnum2.length-1;i++) {
+                 temp[i] = arrnum2[i]; 
+            }
+            arrnum2 = temp;
+            
+            String number2="";
+            for(int i=0; i<arrnum2.length;i++) {
+                 number2 += arrnum2[i]; 
+            }
+            
+            Second_Label.setText(number2);
+        }
+        
     }//GEN-LAST:event_LeftDelete_ButtonActionPerformed
 
     private void RightDelete_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RightDelete_ButtonActionPerformed
-        // TODO add your handling code here:
+       splitNumberToStringArray();
+        if(checkbox1.getState() == true){
+            char[] temp = new char[arrnum1.length-1];
+            int j=1;
+            for(int i=0; i<arrnum1.length-1;i++) {
+                 temp[i] = arrnum1[j];
+                 j++;
+            }
+            arrnum1 = temp;
+            
+            String number1="";
+            for(int i=0; i<arrnum1.length;i++) {
+                 number1 += arrnum1[i]; 
+            }
+            
+            First_Label.setText(number1);
+        } 
+        
+        else if(checkbox2.getState() == true){
+            char[] temp = new char[arrnum2.length-1];
+            int j=1;
+            for(int i=0; i<arrnum2.length-1;i++) {
+                 temp[i] = arrnum2[j]; 
+                 j++;
+            }
+            arrnum2 = temp;
+            
+            String number2="";
+            for(int i=0; i<arrnum2.length;i++) {
+                 number2 += arrnum2[i]; 
+            }
+            
+            Second_Label.setText(number2);
+        }
     }//GEN-LAST:event_RightDelete_ButtonActionPerformed
 
     private void ResultPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_ResultPropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_ResultPropertyChange
+
+    private void checkbox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkbox1MouseClicked
+        checkbox1.setState(true);
+        checkbox2.setState(false);
+    }//GEN-LAST:event_checkbox1MouseClicked
+
+    private void checkbox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkbox2MouseClicked
+        checkbox2.setState(true);
+        checkbox1.setState(false);
+    }//GEN-LAST:event_checkbox2MouseClicked
     
     @Override
     // Background color;
