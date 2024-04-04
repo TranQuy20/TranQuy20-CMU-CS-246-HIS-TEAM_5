@@ -519,7 +519,7 @@ public class UIApp extends javax.swing.JPanel {
         } else if (comboBox.equals("Square Root")) {
             GetValueOnlyOne();
             if(num1<0) {
-                Report.setText("number must >=0");
+                Report.setText("Number must >=0");
             } else {
                 double result = cal.SquareRoot(num1);
                 resultText.setText(result + "");
